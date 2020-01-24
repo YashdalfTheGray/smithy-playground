@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "projections": {
+    "source": {
+      "plugins": {}
+    }
+  },
+  "plugins": {
+    "openapi": {
+      "service": "com.yashdalfthegray.playground#ContactService"
+    }
+  }
+}
