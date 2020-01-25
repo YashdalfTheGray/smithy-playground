@@ -1,5 +1,8 @@
 FROM amazoncorretto:8
 
+# set up an arg to switch the language on a whim
+ARG lang=kotlin
+
 # install some dependencies
 RUN yum install -y vim wget unzip
 
@@ -13,6 +16,7 @@ RUN mkdir -p /usr/playground
 WORKDIR /usr/playground
 
 # initialze an empty kotlin project
-RUN gradle --no-daemon init --type kotlin-library --dsl kotlin
+RUN gradle --no-daemon init --type ${lang}-library --dsl kotlin
 COPY build.gradle.kts /usr/playground/build.gradle.kts
-RUN gradle
+COPY model /usr/playground/src/main/smithy
+COPY smithy-build.json /usr/playground/smithy-build.json
