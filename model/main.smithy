@@ -6,6 +6,8 @@ use aws.api#arn
 use aws.api#arnReference
 
 /// A service that provides access to your contacts
+@protocols([{ name: "aws.rest-json-1.1", auth: ["http-bearer"] }])
+@auth(["http-bearer"])
 service ContactService {
   version: "2020-01-24",
   resources: [Contact]
@@ -18,14 +20,9 @@ service ContactService {
   noAccount: true
 )
 resource Contact {
-  identifiers: { contactId: Uuid },
-  resources: [FirstName, LastName, Email]
+  identifiers: { contactId: Uuid }
 }
 
 @arnReference(service: ContactService, resource: Contact)
 @pattern("\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b")
 string Uuid
-
-string FirstName
-string LastName
-string Email
