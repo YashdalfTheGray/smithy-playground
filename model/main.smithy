@@ -16,13 +16,10 @@ service ContactService {
 /// A collection of contact data on the same person
 @arn(
   template: "contacts/{contactId}",
-  noRegion: true,
   noAccount: true
 )
 resource Contact {
-  identifiers: { contactId: Uuid }
+  identifiers: {
+    contactId: String
+  }
 }
-
-@arnReference(service: ContactService, resource: Contact)
-@pattern("\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b")
-string Uuid
