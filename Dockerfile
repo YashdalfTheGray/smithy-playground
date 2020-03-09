@@ -18,5 +18,5 @@ WORKDIR /usr/playground
 # initialze an empty kotlin project
 RUN gradle --no-daemon init --type ${lang}-library --dsl kotlin
 COPY build.gradle.kts /usr/playground/build.gradle.kts
-COPY model /usr/playground/src/main/smithy
+COPY model /usr/playground/model
 COPY smithy-build.json /usr/playground/smithy-build.json
