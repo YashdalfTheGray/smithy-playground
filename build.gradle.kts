@@ -22,6 +22,14 @@ repositories {
     jcenter()
 }
 
+buildscript {
+    dependencies {
+        // This dependency is required in order to apply the "openapi"
+        // plugin in smithy-build.json
+        classpath("software.amazon.smithy:smithy-openapi:0.9.7")
+    }
+}
+
 dependencies {
     // Use the Kotlin JDK 8 standard library
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
