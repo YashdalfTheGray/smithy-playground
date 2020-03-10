@@ -1,5 +1,6 @@
 {
   "version": "1.0",
+  "outputDirectory": "build/smithy",
   "projections": {
     "source": {
       "plugins": {}
@@ -8,6 +9,7 @@
   "plugins": {
     "openapi": {
       "service": "com.yashdalfthegray.playground#ContactService"
-    }
+    },
+    "build-info": {}
   }
 }
