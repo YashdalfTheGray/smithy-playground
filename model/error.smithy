@@ -4,18 +4,18 @@ namespace com.yashdalfthegray.playground
 
 @error("client")
 @httpError(400)
-struct BadRequestError {
+structure BadRequestError {
   message: String
 }
 
 @error("client")
 @httpError(404)
-struct NotFoundError {
+structure NotFoundError {
   message: String
 }
 
 @error("server")
 @httpError(500)
-struct InternalServerError {
+structure InternalServerError {
   message: String
 }
