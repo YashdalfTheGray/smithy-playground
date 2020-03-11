@@ -22,4 +22,5 @@ resource Contact {
     contactId: String
   },
   create: CreateContact,
+  read: DescribeContact,
 }
