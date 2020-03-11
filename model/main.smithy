@@ -23,4 +23,6 @@ resource Contact {
   },
   create: CreateContact,
   read: DescribeContact,
+  update: UpdateContact,
+  delete: DeleteContact,
 }
