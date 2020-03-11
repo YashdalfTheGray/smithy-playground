@@ -58,7 +58,7 @@ operation UpdateContact {
   errors: [BadRequestError, NotFoundError, InternalServerError]
 }
 
-@documentation("the request object for the UpdateContact operation")
+@documentation("The request object for the UpdateContact operation")
 structure UpdateContactRequest {
   @required
   @httpLabel
@@ -70,6 +70,28 @@ structure UpdateContactRequest {
 
 @documentation("The response object for the UpdateContact operation")
 structure UpdateContactResponse {
+  @required
+  @httpPayload
+  contact: ContactEntry
+}
+
+@documentation("Delete an already existing contact in the system")
+@http(method: "DELETE", uri: "/contacts/{contactId}")
+operation DeleteContact {
+  input: DeleteContactRequest,
+  output: DeleteContactResponse,
+  errors: [BadRequestError, NotFoundError, InternalServerError]
+}
+
+@documentation("The request object for the DeleteContact operation")
+structure DeleteContactRequest {
+  @required
+  @httpLabel
+  contactId: String
+}
+
+@documentation("The response object for the DeleteContact operation")
+structure DeleteContactResponse {
   @required
   @httpPayload
   contact: ContactEntry
