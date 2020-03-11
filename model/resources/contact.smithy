@@ -50,6 +50,31 @@ structure DescribeContactResponse {
   contact: ContactEntry
 }
 
+@documentation("Update an already existing contact in the system")
+@http(method: "POST", uri: "/contacts/{contactId}")
+operation UpdateContact {
+  input: UpdateContactRequest,
+  output: UpdateContactResponse,
+  errors: [BadRequestError, NotFoundError, InternalServerError]
+}
+
+@documentation("the request object for the UpdateContact operation")
+structure UpdateContactRequest {
+  @required
+  @httpLabel
+  contactId: String
+
+  @required
+  details: ContactDetails
+}
+
+@documentation("The response object for the UpdateContact operation")
+structure UpdateContactResponse {
+  @required
+  @httpPayload
+  contact: ContactEntry
+}
+
 structure ContactEntry {
   @required
   metadata: ResourceMetadata,
