@@ -30,5 +30,13 @@ metadata validators = [
     configuration: {
       selector: "operation -[output]-> :not([id|name$=Response])"
     }
+  },
+  {
+    name: "EmitEachSelector",
+    id: "ConsistentErrorStructureName",
+    message: "This structure contains the error trait but does not end with 'Error'",
+    configuration: {
+      selector: "structure[trait|error] :not([id|name$=Error])"
+    }
   }
 ]
