@@ -97,6 +97,49 @@ structure DeleteContactResponse {
   contact: ContactEntry
 }
 
+@documentation("List all contacts in the system")
+@http(method: "GET", uri: "/contacts")
+@pagination(
+  inputToken: "nextToken",
+  outputToken: "nextToken",
+  pageSize: "limit",
+  items: "contacts"
+)
+operation ListContacts {
+  input: ListContactsRequest,
+  output: ListContactResponse,
+  errors: [BadRequestError, InternalServerError]
+}
+
+@documentation("The request object for the ListContacts operation")
+structure ListContactsRequest {
+  @httpQuery("limit")
+  limit: Integer,
+
+  @httpQuery("nextToken")
+  nextToken: String,
+}
+
+@documentation("The response object for the ListContacts operation")
+structure ListContactsResponse {
+  @required
+  contacts: ContactHeadersList,
+
+  nextToken: String,
+}
+
+list ContactHeadersList {
+  member: ContactHeader
+}
+
+structure ContactHeader {
+  @required
+  contactId: String,
+
+  @required
+  name: String
+}
+
 structure ContactEntry {
   @required
   metadata: ResourceMetadata,

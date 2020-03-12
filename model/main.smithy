@@ -25,4 +25,5 @@ resource Contact {
   read: DescribeContact,
   update: UpdateContact,
   delete: DeleteContact,
+  list: ListContacts,
 }
