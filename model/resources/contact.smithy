@@ -8,7 +8,7 @@ namespace com.yashdalfthegray.playground
 operation CreateContact {
   input: CreateContactRequest,
   output: CreateContactResponse,
-  errors: [BadRequestError, NotFoundError, InternalServerError]
+  errors: [BadRequestError, InternalServerError]
 }
 
 @documentation("The request object for the CreateContact operation")
@@ -52,6 +52,7 @@ structure DescribeContactResponse {
 
 @documentation("Update an already existing contact in the system")
 @http(method: "POST", uri: "/contacts/{contactId}")
+@idempotent
 operation UpdateContact {
   input: UpdateContactRequest,
   output: UpdateContactResponse,
@@ -62,10 +63,13 @@ operation UpdateContact {
 structure UpdateContactRequest {
   @required
   @httpLabel
-  contactId: String
+  contactId: String,
 
   @required
-  details: ContactDetails
+  details: ContactDetails,
+
+  @idempotencyToken
+  clientToken: String,
 }
 
 @documentation("The response object for the UpdateContact operation")
@@ -77,6 +81,7 @@ structure UpdateContactResponse {
 
 @documentation("Delete an already existing contact in the system")
 @http(method: "DELETE", uri: "/contacts/{contactId}")
+@idempotent
 operation DeleteContact {
   input: DeleteContactRequest,
   output: DeleteContactResponse,
@@ -87,7 +92,10 @@ operation DeleteContact {
 structure DeleteContactRequest {
   @required
   @httpLabel
-  contactId: String
+  contactId: String,
+
+  @idempotencyToken
+  clientToken: String,
 }
 
 @documentation("The response object for the DeleteContact operation")
@@ -114,7 +122,7 @@ operation ListContacts {
 @documentation("The request object for the ListContacts operation")
 structure ListContactsRequest {
   @httpQuery("limit")
-  limit: Integer,
+  limit: ListOperationLimit,
 
   @httpQuery("nextToken")
   nextToken: String,

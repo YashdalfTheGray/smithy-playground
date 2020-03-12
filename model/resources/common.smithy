@@ -12,3 +12,6 @@ structure ResourceMetadata {
   @required
   lastModifiedAt: Timestamp,
 }
+
+@range(min: 1, max: 100)
+integer ListOperationLimit
