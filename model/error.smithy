@@ -15,6 +15,12 @@ structure NotFoundError {
 }
 
 @error("client")
+@httpError(409)
+structure ConflictError {
+  message: String
+}
+
+@error("client")
 @httpError(429)
 structure TooManyRequestsError {
   message: String
