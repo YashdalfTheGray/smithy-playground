@@ -8,7 +8,7 @@ namespace com.yashdalfthegray.playground
 operation CreateContact {
   input: CreateContactRequest,
   output: CreateContactResponse,
-  errors: [BadRequestError, InternalServerError]
+  errors: [BadRequestError, TooManyRequestsError, InternalServerError]
 }
 
 @documentation("The request object for the CreateContact operation")
@@ -33,7 +33,7 @@ structure CreateContactResponse {
 operation DescribeContact {
   input: DescribeContactRequest,
   output: DescribeContactResponse,
-  errors: [BadRequestError, NotFoundError, InternalServerError]
+  errors: [BadRequestError, NotFoundError, TooManyRequestsError, InternalServerError]
 }
 
 @documentation("The request object for the DescribeContact operation")
@@ -56,7 +56,7 @@ structure DescribeContactResponse {
 operation UpdateContact {
   input: UpdateContactRequest,
   output: UpdateContactResponse,
-  errors: [BadRequestError, NotFoundError, InternalServerError]
+  errors: [BadRequestError, NotFoundError, TooManyRequestsError, InternalServerError]
 }
 
 @documentation("The request object for the UpdateContact operation")
@@ -85,7 +85,7 @@ structure UpdateContactResponse {
 operation DeleteContact {
   input: DeleteContactRequest,
   output: DeleteContactResponse,
-  errors: [BadRequestError, NotFoundError, InternalServerError]
+  errors: [BadRequestError, NotFoundError, TooManyRequestsError, InternalServerError]
 }
 
 @documentation("The request object for the DeleteContact operation")
@@ -116,7 +116,7 @@ structure DeleteContactResponse {
 operation ListContacts {
   input: ListContactsRequest,
   output: ListContactResponse,
-  errors: [BadRequestError, InternalServerError]
+  errors: [BadRequestError, TooManyRequestsError, InternalServerError]
 }
 
 @documentation("The request object for the ListContacts operation")
