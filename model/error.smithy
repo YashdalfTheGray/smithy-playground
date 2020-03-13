@@ -14,6 +14,12 @@ structure NotFoundError {
   message: String
 }
 
+@error("client")
+@httpError(429)
+structure TooManyRequestsError {
+  message: String
+}
+
 @error("server")
 @httpError(500)
 structure InternalServerError {
